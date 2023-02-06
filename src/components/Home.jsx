@@ -11,13 +11,8 @@ export const Home = () => {
     const {topic} = useParams()
 
     useEffect(()=>{
-        getArticles().then(articles =>setArticles(articles))
-    },[])
-
-        useEffect(()=>{
-            getArticles(topic).then((articles)=>setArticles(articles))
-        })
-    
+        getArticles(topic).then(articles =>setArticles(articles))
+    },[topic])
 
     return (
         <main className='articles'>
