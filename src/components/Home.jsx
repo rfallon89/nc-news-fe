@@ -4,6 +4,7 @@ import { useParams} from "react-router-dom";
 import {Link} from 'react-router-dom'
 import create from '../icons/create-list.png'
 import '../styles/Home.css'
+import {Header} from './Header'
 
 
 export const Home = () => {
@@ -15,6 +16,8 @@ export const Home = () => {
     },[topic])
 
     return (
+        <div>
+            <Header/>
         <main className='articles'>
             {articles.map(article =>{
                 return(
@@ -32,5 +35,6 @@ export const Home = () => {
                 )
             })}
         </main>
+        </div>
     )
 }
