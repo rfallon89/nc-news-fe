@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { getCommentsbyArticleId } from "../utils/API"
+import { AddComment } from "./AddComment"
 import { CommentList } from "./CommentList"
 
 export const Comments = ({article_id}) =>{
@@ -15,7 +16,7 @@ export const Comments = ({article_id}) =>{
     return(
         <section>
            
-
+            <AddComment article_id={article_id} comments={comments} setComments={setComments}/>
             <button onClick={()=>setViewComments(!viewComments)}>View Comments</button>
             
             {viewComments
