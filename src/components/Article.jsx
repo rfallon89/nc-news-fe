@@ -10,7 +10,7 @@ export const Article = () =>{
     const {article_id} = useParams()
     const [article,setArticle] = useState({})
     const [like , setLike] = useState(0)
-    const [undo, setUndo] = useState(0)
+    const [click, setClick] = useState(false)
 
     useEffect(()=>{
         getArticleById(article_id).then(article=>{
@@ -18,42 +18,32 @@ export const Article = () =>{
     },[article_id])
 
     useEffect(()=>{
-        patchArticleById(article_id,like)
-    },[like])
+        patchArticleById(article_id,like).then((vote)=> console.log(vote))
+    },[article_id,click])
 
-    useEffect(()=>{
-        patchArticleById(article_id,undo)
-    },[undo])
-
-    const voteHandler = (e,value) =>{
+    const voteHandler = (value) =>{
         setArticle({...article,votes:article.votes+value})
-        setLike(like+value)
+        setLike(value)
+        setClick(!click)
     }
-
-    const undoHandler = (e,value) =>{
-        setArticle({...article,votes:article.votes+value})
-        setUndo(value)
-        setLike(like+value)
-    }
-
-
+    
     return (
         article.title
         ?<main>
             <h2>{article.title}</h2>
             <p>{article.author}</p>
-            <img src={article.article_img_url} alt={`${article.title}`} />
+            <img id='article_img' src={article.article_img_url} alt={`${article.title}`} />
             <p>{article.body}</p>
-            <div>
-                {like === 1
-                ?<><button disabled onClick ={(e)=>voteHandler(e,1)}> <img src= {Like} alt='like icon'/> <p>{article.votes}</p> </button>
-                <button onClick ={(e)=>undoHandler(e,-1)}> <img src= {dislike} alt='dislike icon'/>Unlike </button>
+            <div id='footer'>
+                {click && like === 1
+                ?<><button className="like" disabled onClick ={()=>voteHandler(1)}> <img className="icon" src= {Like} alt='like icon'/> <p>{article.votes}</p> </button>
+                <button className="like" onClick ={()=>voteHandler(-1)}> <img className="icon" src= {dislike} alt='dislike icon'/>Unlike </button>
                 </> 
                 
-                :like===-1
-                ?<button  onClick ={(e)=>undoHandler(e,1)}><img src= {dislike} alt='dislike icon'/> <p>Remove Dislike</p> </button>
-                :<><button onClick ={(e)=>voteHandler(e,1)}> <img src= {Like} alt='like icon'/> <p>{article.votes}</p> </button>
-                <button onClick ={(e)=>voteHandler(e,-1)}> <img src= {dislike} alt='dislike icon'/> </button></>}
+                :click && like === -1
+                ?<button className="like"  onClick ={()=>voteHandler(1)}><img className="icon" src= {dislike} alt='dislike icon'/> <p>Remove Dislike</p> </button>
+                :<><button className="like" onClick ={()=>voteHandler(1)}> <img className="icon" src= {Like} alt='like icon'/> <p>{article.votes}</p> </button>
+                <button className="like" onClick ={()=>voteHandler(-1)}> <img className="icon" src= {dislike} alt='dislike icon'/> </button></>}
                 
                 <Link to={`/topic/${article.topic}`}><b>{article.topic}</b></Link>
                 <p>{article.created_at.slice(0,10)}</p>
