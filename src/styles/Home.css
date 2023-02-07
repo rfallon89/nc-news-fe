@@ -57,12 +57,17 @@
       margin:0;
       display:flex;
       align-self: flex-end;
+      margin:0;
+      padding:0;
     }
     .created>p{
       display: flex;
       align-self: flex-end;
+      margin:0;
+      padding:0;
     }
-    
+  
+  
     #topic {
       text-decoration: none;
       color: black;
