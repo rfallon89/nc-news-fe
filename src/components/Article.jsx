@@ -5,6 +5,7 @@ import Like from '../icons/thumb-up.png'
 import dislike from '../icons/dislike.png'
 import '../styles/Article.css'
 import { Link } from "react-router-dom"
+import { Comments } from "./Comments"
 
 export const Article = () =>{
     const {article_id} = useParams()
@@ -18,7 +19,7 @@ export const Article = () =>{
     },[article_id])
 
     useEffect(()=>{
-        patchArticleById(article_id,like).then((vote)=> console.log(vote))
+        patchArticleById(article_id,like)
     },[article_id,click])
 
     const voteHandler = (value) =>{
@@ -48,6 +49,9 @@ export const Article = () =>{
                 <Link to={`/topic/${article.topic}`}><b>{article.topic}</b></Link>
                 <p>{article.created_at.slice(0,10)}</p>
             </div>
+            <section>
+                <Comments article_id={article_id}/>
+            </section>
         </main>
         :<p>Loading...</p>
     )

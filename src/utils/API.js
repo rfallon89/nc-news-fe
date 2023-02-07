@@ -38,3 +38,21 @@ export const patchArticleById = (id, vote) => {
     }) => votes
   );
 };
+
+export const patchCommentById = (comment_id, vote) => {
+  const body = { inc_votes: vote };
+  return api.patch(`/comments/${comment_id}`, body).then(
+    ({
+      data: {
+        updated_comment: { votes },
+      },
+    }) => votes
+  );
+};
+
+export const postComment = (article_id, { username }, body) => {
+  const commentObj = { username: username, body: body };
+  return api
+    .post(`/articles/${article_id}/comments`, commentObj)
+    .then(({ data: { comment } }) => comment);
+};
