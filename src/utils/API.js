@@ -13,3 +13,7 @@ export const getArticles = (topic) => {
     })
     .then(({ data: { articles } }) => articles);
 };
+
+export const getTopics = () => {
+  return api.get("/topics").then(({ data: { topics } }) => topics);
+};
