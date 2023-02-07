@@ -13,6 +13,13 @@ export const Article = () =>{
     const [article,setArticle] = useState({})
     const [like , setLike] = useState(0)
     const [click, setClick] = useState(false)
+    const [isMobile, setIsMobile] = useState(window.innerWidth<=1650)
+
+    useEffect(()=>{
+        window.addEventListener("resize", () =>{
+            setIsMobile(window.innerWidth<=1650)
+        })
+    },[])
 
     useEffect(()=>{
         getArticleById(article_id).then(article=>{
@@ -40,23 +47,23 @@ export const Article = () =>{
             <p>{article.body}</p>
             <div id='footer'>
                 {click && like === 1
-                ?<><button className="like1" disabled onClick ={()=>voteHandler(1)}> <img className="icon" src= {Like} alt='like icon'/> <p>{article.votes}</p> </button>
+                ?<div><button className="like1" disabled onClick ={()=>voteHandler(1)}> <img className="icon" src= {Like} alt='like icon'/> <p>{article.votes}</p> </button>
                 <button className="like2" onClick ={()=>voteHandler(-1)}> <img className="icon" src= {dislike} alt='dislike icon'/><p>Unlike</p> </button>
-                </> 
+                </div> 
                 
                 :click && like === -1
                 ?<button className="like3"  onClick ={()=>voteHandler(1)}><img className="icon" src= {dislike} alt='dislike icon'/> <p>Remove Dislike</p> </button>
-                :<><button className="like1" onClick ={()=>voteHandler(1)}> <img className="icon" src= {Like} alt='like icon'/> <p>{article.votes}</p> </button>
-                <button className="like2" onClick ={()=>voteHandler(-1)}> <img className="icon" src= {dislike} alt='dislike icon'/> </button></>}
+                :<div><button className="like1" onClick ={()=>voteHandler(1)}> <img className="icon" src= {Like} alt='like icon'/> <p>{article.votes}</p> </button>
+                <button className="like2" onClick ={()=>voteHandler(-1)}> <img className="icon" src= {dislike} alt='dislike icon'/> </button></div>}
                 
                 <Link id='topic_art' to={`/topic/${article.topic}`}><b>{article.topic.slice(0,1).toUpperCase()+article.topic.slice(1)}</b></Link>
                
             </div>
             <section>
-                <Comments article_id={article_id}/>
+                <Comments article={article}/>
             </section>
         </main>
-        <Home id='sidebar' article_topic={article.topic}/>
+        {!isMobile?<Home id='sidebar' article_topic={article.topic}/>:null}
         </div>
         :<p>Loading...</p>
         
