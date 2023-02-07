@@ -29,7 +29,7 @@ export const Home = () => {
                         <p>{article.author}</p>
                         </div>
                         <div className='created'>
-                        <p><img src= {create}/>{article.created_at.slice(0,10)}</p>
+                        <p><img src= {create} alt=''/>{article.created_at.slice(0,10)}</p>
                         <Link id='topic' to={`/topic/${article.topic}`}><b>{article.topic}</b></Link>
                         </div>
                         </div>
