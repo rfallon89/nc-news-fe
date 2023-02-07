@@ -30,7 +30,11 @@
     
     .overview {
       margin-left: 5px;
-      height: 130px;
+      height: 170px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: space-between;
     }
     
     #title {
@@ -41,16 +45,29 @@
     .created{
       display: flex;
       flex-direction: row;
-      gap: 17vw;
+      padding-left: 0;
+      margin-left: 0;
       font-size: 12px;
-      padding-top:50px
+      align-self:left;
+      justify-content: space-between;
     }
     .created>p>img{
       height:15px;
       width: 15px;
       margin:0;
+      display:flex;
+      align-self: flex-end;
+      margin:0;
+      padding:0;
     }
-    
+    .created>p{
+      display: flex;
+      align-self: flex-end;
+      margin:0;
+      padding:0;
+    }
+  
+  
     #topic {
       text-decoration: none;
       color: black;
@@ -93,13 +110,19 @@
     .created{
       display: flex;
       flex-direction: row;
+      padding-left: 0;
+      margin-left: 0;
       font-size: 12px;
-      margin-top: 70px;
+      align-self:left;
+  
     }
     .created>p>img{
       height:15px;
       width: 15px;
-      
+    }
+    .created>p{
+      margin:0;
+      padding-top:12.5px;
     }
     
     #topic {
@@ -109,6 +132,12 @@
       margin-left: 55px;
       margin-top:16px
     }
-    
+    .overview {
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
     
     }
