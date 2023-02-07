@@ -6,6 +6,7 @@ import dislike from '../icons/dislike.png'
 import '../styles/Article.css'
 import { Link } from "react-router-dom"
 import { Comments } from "./Comments"
+import { Home } from "./Home"
 
 export const Article = () =>{
     const {article_id} = useParams()
@@ -30,10 +31,12 @@ export const Article = () =>{
     
     return (
         article.title
-        ?<main className="article_view">
+        
+        ?<div id='layout'>
+            <main className="article_view">
             <h2>{article.title}</h2>
             <p>{`Posted by ${article.author} on ${new Date(article.created_at).toDateString()}`}</p>
-            <img id='article_img' src={article.article_img_url} alt={`${article.title}`} />
+            <img id='article_view_img' src={article.article_img_url} alt={`${article.title}`} />
             <p>{article.body}</p>
             <div id='footer'>
                 {click && like === 1
@@ -53,7 +56,10 @@ export const Article = () =>{
                 <Comments article_id={article_id}/>
             </section>
         </main>
+        <Home id='sidebar' article_topic={article.topic}/>
+        </div>
         :<p>Loading...</p>
+        
     )
 
 }
