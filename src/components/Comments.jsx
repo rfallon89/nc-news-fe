@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react"
 import { getCommentsbyArticleId ,postComment} from "../utils/API"
 import { UserContext } from "../context/user"
+import { CommentList } from "./CommentList"
 
 export const Comments = ({article_id}) =>{
     const [comments,setComments] = useState([])
@@ -26,20 +27,7 @@ export const Comments = ({article_id}) =>{
             <button onClick={()=>setViewComments(!viewComments)}>View Comments</button>
             
             {viewComments
-            ? <ul>
-            {comments.map(comment=>{
-                return (
-                    <li key={comment.comment_id}>
-                        <p>{comment.body}</p>
-                        <div><p>{comment.votes}</p></div>
-                        <div>
-                            <p>{comment.author}</p>
-                            <p>{new Date(comment.created_at).toDateString()}</p>
-                            </div>
-                    </li>
-                )
-            })}
-            </ul>
+            ? <CommentList comments={comments}/>
             :<p></p>}
 
         </section>
