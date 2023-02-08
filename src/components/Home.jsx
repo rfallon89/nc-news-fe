@@ -5,21 +5,27 @@ import {Link} from 'react-router-dom'
 import create from '../icons/create-list.png'
 import '../styles/Home.css'
 import {Header} from './Header'
+import { Sort } from './Sort';
 
 
 export const Home = ({article_topic}) => {
     const [articles, setArticles] = useState([])
     const {topic} = useParams()
+    const [sortBy, setSortBy] = useState(undefined)
+    const [order, setOrder] = useState(undefined)
+
 
     useEffect(()=>{
         article_topic
         ?getArticles(article_topic).then(articles =>setArticles(articles))
-        :getArticles(topic).then(articles =>setArticles(articles))
-    },[topic])
+        :getArticles(topic, sortBy, order).then(articles =>setArticles(articles))
+    },[topic,sortBy,order])
 
+    
     return (
         <div>
            {!article_topic?<Header/>:null}
+            <Sort setSortBy={setSortBy} setOrder={setOrder}/>
         <main className='articles'>
             {articles.map(article =>{
                 return(
