@@ -5,7 +5,7 @@ const api = axios.create({
 });
 
 export const getArticles = (topic, sort_by, order) => {
-  console.log(sort_by, ">>>>");
+  console.log(order, "<<<order", sort_by, "<<<<<sortby", topic, "<<<<<topic");
   return api
     .get("/articles", {
       params: {
