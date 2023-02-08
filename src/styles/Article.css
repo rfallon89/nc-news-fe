@@ -224,3 +224,118 @@
         
     }
 }
+@media only screen and (max-width: 750px){
+    .icon{
+        height:20px;
+        width: 20px;
+        justify-self: center;
+    }
+    .like1 {
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        padding:5px;
+        border: none ;
+        color: black;
+        border-radius: 15px 0 0 15px;
+        background-color: rgb(239, 239, 239);
+    }
+    .like1:hover{
+        cursor: pointer;
+    }
+    .like2 {
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        padding:5px;
+        border-radius: 0 15px 15px 0;
+        border: none ;
+        color: black;
+    }
+    .like2:hover{
+        cursor: pointer;
+    }
+    .like3{
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        padding:5px;
+        border-radius: 15px 15px 15px 15px;
+        border: none ;
+        color: black; 
+    }
+    .like3:hover{
+        cursor: pointer;
+    }
+    .like3>p{
+        margin:0;
+        padding-right:5px;
+        font-size: 16px;
+        transition: 0.3s;
+    }
+    .like3>p:hover{
+        font-size: 18px;
+    }
+    .like2>p{
+        margin:0;
+        padding-right:5px;
+        font-size: 16px;
+        transition: 0.3s;
+    }
+    .like2>p:hover{
+        font-size: 18px;
+    }
+    .like1>p{
+        margin:0;
+        padding-right:5px;
+        font-size: 16px;
+        border-right:solid 1px grey;
+        transition: 0.3s;
+    }
+    .like1>p:hover{
+        font-size: 18px;
+    }
+    #footer{
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #footer>div{
+        display: flex;
+        flex-direction: row;
+    }
+    #footer>a{
+       margin:0;
+       padding-top: 5px;
+    }
+    
+    #article_view_img{
+        width:350px;
+        height: 250px;
+    }
+    
+    #topic_art{
+        text-decoration: none;
+        color: black;
+        text-align: right;
+      
+    }
+    
+    .article_view{
+        display: flex;
+        justify-items: center;
+        flex-direction: column;
+        width:350px;
+        margin-top: 20px;
+       
+    }
+    
+    #layout{
+        display:flex;
+        flex-direction: row;
+        justify-content: center;
+        
+    }
+    
+}
