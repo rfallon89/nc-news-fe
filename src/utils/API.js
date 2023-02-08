@@ -45,3 +45,7 @@ export const postComment = (article_id, { username }, body) => {
     .post(`/articles/${article_id}/comments`, commentObj)
     .then(({ data: { comment } }) => comment);
 };
+
+export const getUserbyUsername = (username) => {
+  return api.get(`users/${username}`).then(({ data: { user } }) => user);
+};
