@@ -2,19 +2,19 @@ import { useState } from "react";
 
 export const Sort = ({setSortBy,setOrder}) =>{
     const [sortInput, setSortInput] = useState('')
-    const [orderInput, setOrderInput] = useState('')
+    const [orderInput, setOrderInput] = useState('asc')
     
     const submitHandler = (e) =>{
         e.preventDefault()
         setSortBy(()=> sortInput)
         setOrder(()=>orderInput)
-        setSortInput('')
-        setOrderInput('')
+        // setSortInput('')
+        // setOrderInput('')
     }
 
     return (
         <form onSubmit={submitHandler}>
-            <select value={sortInput} onChange={({target})=>setSortInput(target.value)}>
+            <select onChange={({target})=>setSortInput(target.value)}>
                 <option value={undefined}>Sort By</option>
                 <option value='article_id'>Article Id</option>
                 <option value='title'>Title</option>

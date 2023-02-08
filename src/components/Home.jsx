@@ -13,7 +13,7 @@ export const Home = ({article_topic}) => {
     const {topic} = useParams()
     const [sortBy, setSortBy] = useState(undefined)
     const [order, setOrder] = useState(undefined)
-
+    
 
     useEffect(()=>{
         article_topic
@@ -24,8 +24,8 @@ export const Home = ({article_topic}) => {
     
     return (
         <div>
-           {!article_topic?<Header/>:null}
-            <Sort setSortBy={setSortBy} setOrder={setOrder}/>
+            {!article_topic?<Header/>:null}
+            {article_topic?null:<Sort setSortBy={setSortBy} setOrder={setOrder}/>}
         <main className='articles'>
             {articles.map(article =>{
                 return(
