@@ -3,7 +3,8 @@ import messageIcon from '../icons/message.png'
 import like from '../icons/thumb-up.png'
 import dislike from '../icons/dislike.png'
 import '../styles/CommentList.css'
-export const CommentList = ({comments,comment_count}) =>{
+import more from '../icons/more.png'
+export const CommentList = ({comments,comment_count,setPage}) =>{
 
     const [viewComments, setViewComments] = useState(false)
     
@@ -15,7 +16,7 @@ export const CommentList = ({comments,comment_count}) =>{
                 </div>
             
                 {viewComments
-                ?<ul id='commentContainer'>
+                ?<><ul id='commentContainer'>
                     {comments.map(comment=>{
                         return (
                             <li id='commentLayout' key={comment.comment_id}>
@@ -31,7 +32,8 @@ export const CommentList = ({comments,comment_count}) =>{
                             )
                     })}
                 </ul>
-            
+                {comments.length!==comment_count?<div id='iconContainer'><img src={more} alt='more comments icon' onClick={()=> setPage(currPage => currPage+1)} id='more'></img></div>:null}
+                </>
                 :<p></p>}
             </>
             )          

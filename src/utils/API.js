@@ -18,9 +18,13 @@ export const getTopics = () => {
   return api.get("/topics").then(({ data: { topics } }) => topics);
 };
 
-export const getCommentsbyArticleId = (article_id) => {
+export const getCommentsbyArticleId = (article_id, page) => {
   return api
-    .get(`/articles/${article_id}/comments`)
+    .get(`/articles/${article_id}/comments`, {
+      params: {
+        p: page,
+      },
+    })
     .then(({ data: { comments } }) => comments);
 };
 
