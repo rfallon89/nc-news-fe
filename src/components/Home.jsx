@@ -27,6 +27,7 @@ export const Home = ({article_topic}) => {
             {!article_topic?<Header/>:null}
             {article_topic?null:<Sort setSortBy={setSortBy} setOrder={setOrder}/>}
         <main className='articles'>
+            
             {articles.map(article =>{
                 return(
                     <div key={article.article_id} className='article'>
