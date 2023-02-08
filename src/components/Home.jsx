@@ -7,20 +7,22 @@ import '../styles/Home.css'
 import {Header} from './Header'
 
 
-export const Home = ({article_topic}) => {
-    const [articles, setArticles] = useState([])
+export const Home = ({article_topic, onScroll, articleRef, articles}) => {
+    // const [articles, setArticles] = useState([])
     const {topic} = useParams()
-
-    useEffect(()=>{
-        article_topic
-        ?getArticles(article_topic).then(articles =>setArticles(articles))
-        :getArticles(topic).then(articles =>setArticles(articles))
-    },[topic])
+   
+    // useEffect(()=>{
+    //     article_topic
+    //     ?getArticles(article_topic).then(articles =>setArticles(articles))
+    //     :getArticles(topic).then(articles =>setArticles(articles))
+    // },[topic])
 
     return (
-        <div>
+        <div >
+            {articles.length !==0?
+            <>
            {!article_topic?<Header/>:null}
-        <main className='articles'>
+        <main className='articles' onScroll={onScroll} ref ={articleRef} style={{height:"100vh", overflowY:"auto"}}>
             {articles.map(article =>{
                 return(
                     <div key={article.article_id} className='article'>
@@ -39,6 +41,8 @@ export const Home = ({article_topic}) => {
                 )
             })}
         </main>
+        </>
+        :<p>loading</p>}
         </div>
     )
 }
