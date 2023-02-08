@@ -7,17 +7,19 @@ import '../styles/Home.css'
 import {Header} from './Header'
 
 
-export const Home = () => {
+export const Home = ({article_topic}) => {
     const [articles, setArticles] = useState([])
     const {topic} = useParams()
 
     useEffect(()=>{
-        getArticles(topic).then(articles =>setArticles(articles))
+        article_topic
+        ?getArticles(article_topic).then(articles =>setArticles(articles))
+        :getArticles(topic).then(articles =>setArticles(articles))
     },[topic])
 
     return (
         <div>
-            <Header/>
+           {!article_topic?<Header/>:null}
         <main className='articles'>
             {articles.map(article =>{
                 return(

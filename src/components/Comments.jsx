@@ -1,27 +1,21 @@
 import { useEffect, useState } from "react"
 import { getCommentsbyArticleId } from "../utils/API"
+import { AddComment } from "./AddComment"
 import { CommentList } from "./CommentList"
 
-export const Comments = ({article_id}) =>{
-    const [comments,setComments] = useState([])
-    const [viewComments, setViewComments] = useState(false)
-   
+export const Comments = ({article:{article_id,comment_count}}) =>{
     
+    const [comments,setComments] = useState([])
+    const [commentCount, setCommentCount] = useState(comment_count)
+  
     useEffect(()=>{
         getCommentsbyArticleId(article_id).then(comments=>setComments(comments))
-    })
+    },[])
 
-  
-    return(
+    return (
         <section>
-           
-
-            <button onClick={()=>setViewComments(!viewComments)}>View Comments</button>
-            
-            {viewComments
-            ? <CommentList comments={comments}/>
-            :<p></p>}
-
+           <AddComment article_id={article_id} setComments={setComments} setCount={setCommentCount}/>
+           <CommentList comments={comments} comment_count={commentCount}/>
         </section>
     )
 }
