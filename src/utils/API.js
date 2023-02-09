@@ -41,9 +41,13 @@ export const patchArticleById = (id, vote) => {
   );
 };
 
-export const postComment = (article_id, { username }, body) => {
+export const postComment = (article_id, username, body) => {
   const commentObj = { username: username, body: body };
   return api
     .post(`/articles/${article_id}/comments`, commentObj)
     .then(({ data: { comment } }) => comment);
+};
+
+export const deleteComment = (comment_id) => {
+  return api.delete(`/comments/${comment_id}`).then((res) => console.log(res));
 };
