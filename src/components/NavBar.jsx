@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import '../styles/Nav.css'
 import logo from '../icons/apple.png'
-import { useState,useEffect } from "react";
+import { useState,useEffect, useContext } from "react";
 import { getTopics } from "../utils/API";
+import {UserContext} from '../context/user'
 
 export const NavBar = () =>{
+    const {user, setUser} = useContext(UserContext)
     const [topics,setTopics] = useState([])
     const [isMobile, setIsMobile] = useState(window.innerWidth<=750)
     useEffect(()=>{
@@ -27,7 +29,17 @@ export const NavBar = () =>{
         <nav>
             <ul>
             <li><Link to='/'><img src={logo} alt='NC News logo'/></Link></li>
-            <li><Link id='login' to='/login'>Log in</Link></li>
+            {user.username
+            ? <li><p className="user">{user.username}</p>
+            <ul>
+                <li>User Profile tbc</li>
+                <li>View Articles tbc</li>
+                <button onClick = {()=>{
+                    setUser({})
+                }}>Log out</button>
+            </ul>
+             </li>:
+            <li><Link id='login' to='/login'>Log in</Link></li>}
             </ul>
             {isMobile
             ?<ul>

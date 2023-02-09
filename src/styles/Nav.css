@@ -23,6 +23,13 @@ nav {
     padding:auto;
     padding-left:0;
 }
+.user{
+  border-right:solid 1px #21715d ;
+  margin-right:10vw;
+  padding:auto;
+  padding-left:0;
+  color: white;
+}
 
 .topic {
     position: absolute;
@@ -119,6 +126,14 @@ nav ul {
         padding-left:0;
         padding-top:23px;
     }
+    .user{
+      border-right:solid 1px #21715d ;
+      margin-right:10vw;
+      padding:auto;
+      padding-left:0;
+      padding-top:23px;
+      color: white;
+  }
     
     .topic {
         position: absolute;
