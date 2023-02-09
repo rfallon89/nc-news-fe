@@ -6,7 +6,7 @@ import '../styles/AddComment.css'
 
 export const AddComment = ({setComments, article_id, setCount}) =>{
  
-    const {user:username} = useContext(UserContext)
+    const {user:{username}} = useContext(UserContext)
     const [newComment, setNewComment] = useState('')
 
     const addComment = (e) =>{
