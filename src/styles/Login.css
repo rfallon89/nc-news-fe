@@ -1,0 +1,54 @@
+#background{
+    opacity:0.6 ;
+    position: absolute;
+    width: 20vw;
+    height: 20vw;
+    left:40%;
+    top:40%
+    
+}
+
+#loginButton{
+    width: 100px;
+    margin-top: 30px;
+    margin-left: 50px;
+    background-color: #37bc9b;
+    border-radius: 15px;
+    padding: 5px;
+    color: white;
+    font-size: 16px;
+    box-shadow: 3px 3px 3px grey;
+    transition:0.3s;
+}
+#loginButton:hover{
+    cursor: pointer;
+    background-color:#31a98b ;
+    
+}
+
+#usernameInput{
+  width: 200px;
+}
+
+#loginContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    
+}
+#username{
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+@media only screen and (max-width: 750px){
+    #background{
+        opacity:0;
+        position: absolute;
+        width: 20vw;
+        height: 20vw;
+        left:40%;
+        top:40%
+        
+    }
+}
