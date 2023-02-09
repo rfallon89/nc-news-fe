@@ -20,9 +20,9 @@ export const Pagination = ({page, setPage, totalArticles})=>{
     
     return (
         <ul id='pagination'>
-            <li onClick={ page===pageNumbers.length? null:paginationHandler} value={page+1}>Next</li>
-            {pageNumbers.map(number=><li id={page===number?'selected':'not'} onClick={paginationHandler}key={number} value={number}>{number}</li>)}
             <li onClick={page!==1?paginationHandler:null} value={page-1}>Previous</li>
+            {pageNumbers.map(number=><li id={page===number?'selected':'not'} onClick={paginationHandler}key={number} value={number}>{number}</li>)}
+            <li onClick={ page===pageNumbers.length? null:paginationHandler} value={page+1}>Next</li>
         </ul>
     )
 
