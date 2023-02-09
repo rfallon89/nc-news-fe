@@ -5,11 +5,15 @@ import {Link} from 'react-router-dom'
 import create from '../icons/create-list.png'
 import '../styles/Home.css'
 import {Header} from './Header'
+import { Sort } from './Sort';
 
 
 export const Home = ({article_topic}) => {
     const [articles, setArticles] = useState([])
     const {topic} = useParams()
+    const [sortBy, setSortBy] = useState(undefined)
+    const [order, setOrder] = useState(undefined)
+    
     const [error, setError] = useState(false)
 
     useEffect(()=>{
@@ -17,8 +21,8 @@ export const Home = ({article_topic}) => {
         ?getArticles(article_topic).then(articles =>{
             setError(false)
             setArticles(articles)})
-        :getArticles(topic).then(articles =>setArticles(articles)).catch((e)=>setError(true))
-    },[topic])
+        :getArticles(topic, sortBy, order).then(articles =>setArticles(articles)).catch((e)=>setError(true))
+    },[topic,,sortBy,order])
 
     let navigate = useNavigate();
 
@@ -30,7 +34,9 @@ export const Home = ({article_topic}) => {
             {error? errorHandler():
             <div>
            {!article_topic?<Header/>:null}
+           {article_topic?null:<Sort setSortBy={setSortBy} setOrder={setOrder}/>}
         <main className='articles'>
+            
             {articles.map(article =>{
                 return(
                     <div key={article.article_id} className='article'>
