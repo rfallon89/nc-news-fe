@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 import { getArticles} from '../utils/API'
-import { useParams} from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
 import {Link} from 'react-router-dom'
 import create from '../icons/create-list.png'
 import '../styles/Home.css'
@@ -10,15 +10,25 @@ import {Header} from './Header'
 export const Home = ({article_topic}) => {
     const [articles, setArticles] = useState([])
     const {topic} = useParams()
+    const [error, setError] = useState(false)
 
     useEffect(()=>{
         article_topic
-        ?getArticles(article_topic).then(articles =>setArticles(articles))
-        :getArticles(topic).then(articles =>setArticles(articles))
+        ?getArticles(article_topic).then(articles =>{
+            setError(false)
+            setArticles(articles)})
+        :getArticles(topic).then(articles =>setArticles(articles)).catch((e)=>setError(true))
     },[topic])
 
+    let navigate = useNavigate();
+
+    const errorHandler = () =>{{
+        return navigate("*")
+    }}
     return (
         <div>
+            {error? errorHandler():
+            <div>
            {!article_topic?<Header/>:null}
         <main className='articles'>
             {articles.map(article =>{
@@ -39,6 +49,7 @@ export const Home = ({article_topic}) => {
                 )
             })}
         </main>
+        </div>}
         </div>
     )
 }
