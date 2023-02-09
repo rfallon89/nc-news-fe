@@ -2,13 +2,14 @@ import { useState } from "react";
 import '../styles/Sort.css'
 
 export const Sort = ({setSortBy,setOrder}) =>{
-    const [sortInput, setSortInput] = useState('')
-    const [orderInput, setOrderInput] = useState('asc')
+    const [sortInput, setSortInput] = useState(undefined)
+    const [orderInput, setOrderInput] = useState('desc')
     const [sortModal, setSortModal] = useState('hideSort')
     const [orderModal, setOrderModal] = useState('hideOrder')
 
     const submitHandler = (e) =>{
         e.preventDefault()
+        console.log(sortInput)
         setSortBy(()=> sortInput)
         setOrder(()=>orderInput)
         setSortModal('hideSort')
