@@ -31,15 +31,14 @@ export const Login = () => {
             <img id='background' src={logo}/>
             <Header/>
             <div id='loginContainer'>
-            {!exists?<p> Username does not exist. Try again or create a new user profile</p>:null}
+            {!exists?<p id='Usernamefail'> Username does not exist. Try again or create a new user profile</p>:null}
             <form onSubmit = {submit}>
             <label id='username' htmlFor="username">Username:</label>
             <input id='usernameInput' value={usernameInput} onChange={(e)=>setUsernameInput(e.target.value)} name="username" required/>
             <button id='loginButton'>Log in</button>
             </form>
+            {!exists?<Link  id='signup' to="/signup">Sign up</Link>:<Link id='signup' to='/signup'>Not already signed up?</Link>}
             </div>
-            {/* {!exists?<Link to="/create_username">Sign up</Link>:<p>Not already signed up? <Link to='/create_username'>Create</Link></p>} <<<TBC */}
-        </div>
-         
+        </div>   
     )
 }

@@ -4,7 +4,7 @@
     width: 20vw;
     height: 20vw;
     left:40%;
-    top:40%
+    top:50%
     
 }
 
@@ -19,6 +19,7 @@
     font-size: 16px;
     box-shadow: 3px 3px 3px grey;
     transition:0.3s;
+    margin-bottom: 20px;
 }
 #loginButton:hover{
     cursor: pointer;
@@ -41,6 +42,7 @@
     font-weight: 600;
     margin-bottom: 5px;
 }
+
 @media only screen and (max-width: 750px){
     #background{
         opacity:0;

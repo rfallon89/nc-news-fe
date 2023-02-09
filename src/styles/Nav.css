@@ -25,10 +25,13 @@ nav {
 }
 .user{
   border-right:solid 1px #21715d ;
-  margin-right:10vw;
   padding:auto;
-  padding-left:0;
+  padding-left:5px;
   color: white;
+  margin:0;
+  padding-top: 20px;
+  padding-bottom:21px ;
+  width:164px
 }
 
 .topic {
@@ -57,7 +60,7 @@ nav ul {
   }
   .dropD>p:after { content: ' »'; }
 
-  .dropD>p:only-child:after { content: ''; }
+  /* .dropD>p:only-child:after { content: ''; } */
 
   nav ul li a {
     padding:20px;
@@ -81,6 +84,7 @@ nav ul {
     left:0;
     background:#37bc9b8c;
     float:left;
+    width:170px
   }
   
   nav ul li ul li {
@@ -128,11 +132,13 @@ nav ul {
     }
     .user{
       border-right:solid 1px #21715d ;
-      margin-right:10vw;
+      padding-right:10px;
       padding:auto;
-      padding-left:0;
-      padding-top:23px;
+      padding-left:5px;
       color: white;
+      margin:0;
+      padding-top: 20px;
+      padding-bottom:21px ;
   }
     
     .topic {

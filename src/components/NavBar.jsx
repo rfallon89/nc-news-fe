@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import '../styles/Nav.css'
 import logo from '../icons/apple.png'
 import { useState,useEffect, useContext } from "react";
@@ -9,6 +9,8 @@ export const NavBar = () =>{
     const {user, setUser} = useContext(UserContext)
     const [topics,setTopics] = useState([])
     const [isMobile, setIsMobile] = useState(window.innerWidth<=750)
+    let navigate = useNavigate();
+
     useEffect(()=>{
         getTopics().then((topics)=>{
             const slugs = []
@@ -34,9 +36,10 @@ export const NavBar = () =>{
             <ul>
                 <li>User Profile tbc</li>
                 <li>View Articles tbc</li>
-                <button onClick = {()=>{
+                <li onClick = {()=>{
                     setUser({})
-                }}>Log out</button>
+                    navigate("/login")
+                }}>Log out</li>
             </ul>
              </li>:
             <li><Link id='login' to='/login'>Log in</Link></li>}
