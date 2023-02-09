@@ -13,12 +13,17 @@ export const Home = ({article_topic}) => {
     const {topic} = useParams()
     const [sortBy, setSortBy] = useState(undefined)
     const [order, setOrder] = useState(undefined)
+    const [page, setPage] = useState(1)
+    const [totalArticles, setTotalArticles] = useState(0)
     
-
+  
     useEffect(()=>{
         article_topic
         ?getArticles(article_topic).then(articles =>setArticles(articles))
-        :getArticles(topic, sortBy, order).then(articles =>setArticles(articles))
+        :
+        getArticles(topic, sortBy, order).then(articles =>{
+            setTotalArticles(articles[0].total_count)
+           return setArticles([...articles])})
     },[topic,sortBy,order])
 
     
