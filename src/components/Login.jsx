@@ -31,7 +31,7 @@ export const Login = () => {
             <input value={usernameInput} onChange={(e)=>setUsernameInput(e.target.value)} name="username" required/>
             <button>Log in</button>
             </form>
-            {!exists?<Link to="/create_username">Sign up</Link>:<p>Not already signed up? <Link to='/create_username'>Create</Link></p>}
+            {/* {!exists?<Link to="/create_username">Sign up</Link>:<p>Not already signed up? <Link to='/create_username'>Create</Link></p>} <<<TBC */}
         </div>
          
     )
