@@ -22,7 +22,7 @@ export const Home = ({article_topic}) => {
             setError(false)
             setArticles(articles)})
         :getArticles(topic, sortBy, order).then(articles =>setArticles(articles)).catch((e)=>setError(true))
-    },[topic,,sortBy,order])
+    },[topic,sortBy,order])
 
     let navigate = useNavigate();
 
