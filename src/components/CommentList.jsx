@@ -6,7 +6,7 @@ import '../styles/CommentList.css'
 import { DeleteComment } from "./DeleteComment"
 import {UserContext} from '../context/user'
 
-export const CommentList = ({comments,setComments,article}) =>{
+export const CommentList = ({comments,setComments,article, commentCount, setCommentCount}) =>{
     const {user:{username}} = useContext(UserContext)
     const [viewComments, setViewComments] = useState(false)
     
@@ -14,7 +14,7 @@ export const CommentList = ({comments,setComments,article}) =>{
             <>
                 <div id='commentsList'>
                     <button id='comments_toggle' onClick={()=>setViewComments(!viewComments)}><img src={messageIcon} alt='message icon'/> Comments</button>
-                <p>{article.comment_count}</p>
+                <p>{commentCount}</p>
                 </div>
             
                 {viewComments
@@ -30,12 +30,12 @@ export const CommentList = ({comments,setComments,article}) =>{
                                 </div>
                          
                                 <p>{body}</p>
-                                <div>
+                                <div id='trashContainer'>
                                 <div id='likes'><img src={like} alt='like icon'/><p>{votes}</p><img src={dislike} alt='dislike icon'/></div>
-                                {username===article.author || username===author?<DeleteComment commentPosition = {index} setComments ={setComments} commentId = {comment_id}/>:null}
+                                {username===article.author || username===author?<DeleteComment commentPosition = {index} setComments ={setComments} commentId = {comment_id} setCommentCount={setCommentCount}/>:null}
                                 </div>
                                 </>
-                                :  <p>Comment ID: {comment_id} has been removed</p> }
+                                :  <p id='deleted'>Comment ID: {comment_id} has been removed</p> }
                             </li>
                             )
                     })}

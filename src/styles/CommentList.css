@@ -54,8 +54,8 @@
 }
 #likes>p{
     font-weight: bold;
-    font-size: 16px;
-    padding:0;
+    font-size: 18px;
+    padding-top:0px;
     margin:0;
 }
 #post>p{
@@ -64,8 +64,28 @@
     padding-bottom:7px;
     padding-right: 5px;
 }
-
+#likes{
+    display: flex;
+    flex-direction: row;
+    margin-top: 7px;
+}
+#likes>img{
+    width: 23px;
+    height: 23px;
+}
+#trashContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 35px;
+}
+#deleted{
+    color:red;
+}
 @media only screen and (max-width: 750px){
+    #deleted{
+        color:red;
+    }
     #commentsList{
         display:flex;
         flex-direction: row;
@@ -133,5 +153,21 @@
         padding-bottom:7px;
         padding-right: 5px;
     }
+    #likes{
+        display: flex;
+        flex-direction: row;
+        margin-top: 7px;
+    }
+    #likes>img{
+        width: 15px;
+        height: 15px;
+    }
+    #trashContainer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 35px;
+    }
+    
     
 }
