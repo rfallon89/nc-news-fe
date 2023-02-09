@@ -7,6 +7,7 @@ import '../styles/Article.css'
 import { Link } from "react-router-dom"
 import { Comments } from "./Comments"
 import { Home } from "./Home"
+import {Error} from "./Error"
 
 export const Article = () =>{
     const {article_id} = useParams()
@@ -14,6 +15,7 @@ export const Article = () =>{
     const [like , setLike] = useState(0)
     const [click, setClick] = useState(false)
     const [isMobile, setIsMobile] = useState(window.innerWidth<=1650)
+    const [articleNotFound, setArticleNotFound] = useState(false)
 
     useEffect(()=>{
         window.addEventListener("resize", () =>{
@@ -23,7 +25,10 @@ export const Article = () =>{
 
     useEffect(()=>{
         getArticleById(article_id).then(article=>{
-            setArticle(article)})
+            setArticleNotFound(false)
+            setArticle(article)}).catch((e)=>{
+                setArticleNotFound(true)
+            })
     },[article_id])
 
     useEffect(()=>{
@@ -37,8 +42,11 @@ export const Article = () =>{
     }
     
     return (
+        articleNotFound?<>
+        <Error/>
+        </>
+        :
         article.title
-        
         ?<div id='layout'>
             <main className="article_view">
             <h2>{article.title}</h2>

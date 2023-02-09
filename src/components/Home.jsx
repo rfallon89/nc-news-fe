@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 import { getArticles} from '../utils/API'
-import { useParams} from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
 import {Link} from 'react-router-dom'
 import create from '../icons/create-list.png'
 import '../styles/Home.css'
@@ -14,18 +14,27 @@ export const Home = ({article_topic}) => {
     const [sortBy, setSortBy] = useState(undefined)
     const [order, setOrder] = useState(undefined)
     
+    const [error, setError] = useState(false)
 
     useEffect(()=>{
         article_topic
-        ?getArticles(article_topic).then(articles =>setArticles(articles))
-        :getArticles(topic, sortBy, order).then(articles =>setArticles(articles))
+        ?getArticles(article_topic).then(articles =>{
+            setError(false)
+            setArticles(articles)})
+        :getArticles(topic, sortBy, order).then(articles =>setArticles(articles)).catch((e)=>setError(true))
     },[topic,sortBy,order])
 
-    
+    let navigate = useNavigate();
+
+    const errorHandler = () =>{{
+        return navigate("*")
+    }}
     return (
         <div>
-            {!article_topic?<Header/>:null}
-            {article_topic?null:<Sort setSortBy={setSortBy} setOrder={setOrder}/>}
+            {error? errorHandler():
+            <div>
+           {!article_topic?<Header/>:null}
+           {article_topic?null:<Sort setSortBy={setSortBy} setOrder={setOrder}/>}
         <main className='articles'>
             
             {articles.map(article =>{
@@ -46,6 +55,7 @@ export const Home = ({article_topic}) => {
                 )
             })}
         </main>
+        </div>}
         </div>
     )
 }

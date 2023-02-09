@@ -29,6 +29,9 @@ form{
     background-color: rgb(175, 175, 175);
     font-size: 20px;
 }
+#noContent{
+    color: red;
+}
 @media only screen and (max-width: 750px){
     textarea{
         border-radius: 10px 10px 0 0;
@@ -39,6 +42,9 @@ form{
         font-size:18px;
         resize:vertical;
         border:solid 1px black;
+    }
+    #noContent{
+        color: red;
     }
     
     #submitComment{
