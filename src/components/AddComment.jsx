@@ -1,4 +1,5 @@
 import { useContext, useState} from "react";
+import {Link} from 'react-router-dom'
 import { UserContext } from "../context/user"
 import { postComment
  } from "../utils/API";
@@ -36,6 +37,7 @@ export const AddComment = ({setComments, article_id, setCount}) =>{
                  </form>
                  {noContent?<p id='noContent'>Please leave a comment before submitting</p>:null}
                  {posted?<p id="added">Comment added</p>:null}
+                 {!username?<Link to='/login'>Log in to leave a comment</Link>:null}
         
             </>
             )

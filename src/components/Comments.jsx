@@ -4,18 +4,17 @@ import { AddComment } from "./AddComment"
 import { CommentList } from "./CommentList"
 
 export const Comments = ({article}) =>{
-    console.log(article.comment_count)
     
     const [comments,setComments] = useState([])
+    // const [commentCount, setCommentCount] = useState(article.comment_count)
     const [commentCount, setCommentCount] = useState(article.comment_count)
-    const [commentCount, setCommentCount] = useState(comment_count)
     const [page, setPage] = useState(1)
   
     useEffect(()=>{
-        getCommentsbyArticleId(article.article_id).then(comments=>{
+        getCommentsbyArticleId(article.article_id,page).then(commentsRes=>{
             setCommentCount(article.comment_count)
-            setComments(comments)})
-    },[article])
+            setComments([...comments,...commentsRes])})
+    },[article,page])
 
     return (
         <section>

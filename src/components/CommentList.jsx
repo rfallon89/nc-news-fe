@@ -6,12 +6,12 @@ import '../styles/CommentList.css'
 import { DeleteComment } from "./DeleteComment"
 import {UserContext} from '../context/user'
 import more from '../icons/more.png'
-export const CommentList = ({comments,comment_count,setPage}) =>{
 
-export const CommentList = ({comments,setComments,article, commentCount, setCommentCount}) =>{
+export const CommentList = ({comments,setComments,article, commentCount, setCommentCount,setPage, setDeleted}) =>{
     const {user:{username}} = useContext(UserContext)
     const [viewComments, setViewComments] = useState(false)
-    
+    console.log(commentCount,"<<<<count")
+    console.log(comments.length,'<<<<<length')
     return  (
             <>
                 <div id='commentsList'>
@@ -20,7 +20,7 @@ export const CommentList = ({comments,setComments,article, commentCount, setComm
                 </div>
             
                 {viewComments
-                ?<ul id='commentContainer'>
+                ?<><ul id='commentContainer'>
                     {comments.map(({comment_id,author,created_at,body,votes},index)=>{
                         return (
                             <li id='commentLayout' key={comment_id}>
@@ -34,7 +34,7 @@ export const CommentList = ({comments,setComments,article, commentCount, setComm
                                 <p>{body}</p>
                                 <div id='trashContainer'>
                                 <div id='likes'><img src={like} alt='like icon'/><p>{votes}</p><img src={dislike} alt='dislike icon'/></div>
-                                {username===article.author || username===author?<DeleteComment commentPosition = {index} setComments ={setComments} commentId = {comment_id} setCommentCount={setCommentCount}/>:null}
+                                {username===article.author || username===author?<DeleteComment setDeleted={setDeleted} commentPosition = {index} setComments ={setComments} commentId = {comment_id} setCommentCount={setCommentCount}/>:null}
                                 </div>
                                 </>
                                 :  <p id='deleted'>Comment ID: {comment_id} has been removed</p> }
@@ -42,7 +42,7 @@ export const CommentList = ({comments,setComments,article, commentCount, setComm
                             )
                     })}
                 </ul>
-                {comments.length!==comment_count?<div id='iconContainer'><img src={more} alt='more comments icon' onClick={()=> setPage(currPage => currPage+1)} id='more'></img></div>:null}
+                {comments.length<commentCount?<div id='iconContainer'><img src={more} alt='more comments icon' onClick={()=> setPage(currPage => currPage+1)} id='more'></img></div>:null}
                 </>
                 :<p></p>}
             </>
