@@ -1,0 +1,26 @@
+#pagination{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style: none;
+}
+
+#pagination>li{
+    padding: 10px;  
+}
+#pagination>li:hover{
+    padding: 10px;
+    cursor: pointer;
+    background-color: #37bc9b;
+    color: white;
+}
+
+#selected{
+background-color: #21715d;
+color: white;
+}
+#selected:hover{
+    background-color: #21715d;
+    color: white;
+    }

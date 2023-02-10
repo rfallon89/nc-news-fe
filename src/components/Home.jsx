@@ -6,13 +6,19 @@ import create from '../icons/create-list.png'
 import '../styles/Home.css'
 import {Header} from './Header'
 import { Sort } from './Sort';
+import { Pagination } from './Pagination';
 
 
 export const Home = ({article_topic}) => {
-    const [articles, setArticles] = useState([])
+    
     const {topic} = useParams()
+
+    const [articles, setArticles] = useState([])
+    const [topicState, setTopicState] = useState(undefined)
     const [sortBy, setSortBy] = useState(undefined)
     const [order, setOrder] = useState(undefined)
+    const [page, setPage] = useState(1)
+    const [totalArticles, setTotalArticles] = useState(0)
     
     const [error, setError] = useState(false)
 
@@ -21,14 +27,23 @@ export const Home = ({article_topic}) => {
         ?getArticles(article_topic).then(articles =>{
             setError(false)
             setArticles(articles)})
-        :getArticles(topic, sortBy, order).then(articles =>setArticles(articles)).catch((e)=>setError(true))
-    },[topic,sortBy,order])
+        :getArticles(topicState, sortBy, order,page).then(articles =>{
+            setTotalArticles(articles[0].total_count)
+           return setArticles([...articles])}).catch((e)=>setError(true))
+    },[topicState,sortBy,order,page])
+
+    useEffect(()=>{
+        if(topic!==topicState){
+            setTopicState(topic)
+            setPage(1)
+        }
+    },[topic])
 
     let navigate = useNavigate();
-
     const errorHandler = () =>{{
         return navigate("*")
     }}
+    
     return (
         <div>
             {error? errorHandler():
@@ -55,6 +70,7 @@ export const Home = ({article_topic}) => {
                 )
             })}
         </main>
+            <Pagination page={page} setPage={setPage} totalArticles={totalArticles}/>
         </div>}
         </div>
     )
