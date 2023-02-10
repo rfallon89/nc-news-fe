@@ -1,26 +1,57 @@
 import {useEffect, useState} from 'react'
 import { getArticles} from '../utils/API'
-import { useParams} from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
 import {Link} from 'react-router-dom'
 import create from '../icons/create-list.png'
 import '../styles/Home.css'
 import {Header} from './Header'
+import { Sort } from './Sort';
+import { Pagination } from './Pagination';
 
 
 export const Home = ({article_topic}) => {
-    const [articles, setArticles] = useState([])
+    
     const {topic} = useParams()
+
+    const [articles, setArticles] = useState([])
+    const [topicState, setTopicState] = useState(undefined)
+    const [sortBy, setSortBy] = useState(undefined)
+    const [order, setOrder] = useState(undefined)
+    const [page, setPage] = useState(1)
+    const [totalArticles, setTotalArticles] = useState(0)
+    
+    const [error, setError] = useState(false)
 
     useEffect(()=>{
         article_topic
-        ?getArticles(article_topic).then(articles =>setArticles(articles))
-        :getArticles(topic).then(articles =>setArticles(articles))
+        ?getArticles(article_topic).then(articles =>{
+            setError(false)
+            setArticles(articles)})
+        :getArticles(topicState, sortBy, order,page).then(articles =>{
+            setTotalArticles(articles[0].total_count)
+           return setArticles([...articles])}).catch((e)=>setError(true))
+    },[topicState,sortBy,order,page])
+
+    useEffect(()=>{
+        if(topic!==topicState){
+            setTopicState(topic)
+            setPage(1)
+        }
     },[topic])
 
+    let navigate = useNavigate();
+    const errorHandler = () =>{{
+        return navigate("*")
+    }}
+    
     return (
         <div>
+            {error? errorHandler():
+            <div>
            {!article_topic?<Header/>:null}
+           {article_topic?null:<Sort setSortBy={setSortBy} setOrder={setOrder}/>}
         <main className='articles'>
+            
             {articles.map(article =>{
                 return(
                     <div key={article.article_id} className='article'>
@@ -39,6 +70,8 @@ export const Home = ({article_topic}) => {
                 )
             })}
         </main>
+            <Pagination page={page} setPage={setPage} totalArticles={totalArticles}/>
+        </div>}
         </div>
     )
 }

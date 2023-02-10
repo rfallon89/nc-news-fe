@@ -9,6 +9,7 @@
     
       margin-top: 50px;
     }
+ 
     
     .article{
     
@@ -16,7 +17,7 @@
       width: 100vw;
       margin : 0 20px;
       padding-top: 20px;
-      justify-content: center;
+      justify-content: space-between;
       display: flex;
       flex-direction: row;
     }
