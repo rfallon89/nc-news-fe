@@ -32,7 +32,13 @@ form{
 #noContent{
     color: red;
 }
+#added{
+    color: green;
+}
 @media only screen and (max-width: 750px){
+    #added{
+        color: green;
+    }
     textarea{
         border-radius: 10px 10px 0 0;
         width:330px;

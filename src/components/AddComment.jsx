@@ -9,18 +9,23 @@ export const AddComment = ({setComments, article_id, setCount}) =>{
     const {user:{username}} = useContext(UserContext)
     const [newComment, setNewComment] = useState('')
     const [noContent, setNoContent] = useState(false)
+    const [posted,setPosted] = useState(false)
 
     const addComment = (e) =>{
+        setPosted(false)
         e.preventDefault()
         postComment(article_id,username,newComment).then((comment)=>{
             setComments(curr=>[comment,...curr])
             setCount(curr=>curr+1)
+            setPosted(true)
         }).catch((e)=>setNoContent(true) )
             setNewComment('')
     }
 
     const commentHandler = (e) =>{
         setNewComment(e.target.value)
+        setNoContent(false)
+        setPosted(false)
     }
     
     return (
@@ -30,6 +35,7 @@ export const AddComment = ({setComments, article_id, setCount}) =>{
                     <button id='submitComment'>Add Comment</button>
                  </form>
                  {noContent?<p id='noContent'>Please leave a comment before submitting</p>:null}
+                 {posted?<p id="added">Comment added</p>:null}
         
             </>
             )

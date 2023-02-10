@@ -1,0 +1,29 @@
+#bin{
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border: none;
+    transition: 0.3s;
+    margin: 0;
+}
+#bin:hover{
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+}
+
+@media only screen and (max-width: 750px){
+    #bin{
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        border: none;
+        transition: 0.3s;
+        margin: 0;
+    }
+    #bin:hover{
+        cursor: pointer;
+        width: 22px;
+        height: 22px;
+    }
+}
