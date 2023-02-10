@@ -69,3 +69,9 @@ export const getUserbyUsername = (username) => {
 export const postUser = (userObj) => {
   return api.post("users", userObj).then(({ data: { user } }) => user);
 };
+
+export const patchComment = (commentId, like) => {
+  return api
+    .patch(`/comments/${commentId}`, { inc_votes: like })
+    .then(({ data }) => console.log(data));
+};

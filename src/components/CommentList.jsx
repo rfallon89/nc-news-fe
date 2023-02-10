@@ -6,12 +6,12 @@ import '../styles/CommentList.css'
 import { DeleteComment } from "./DeleteComment"
 import {UserContext} from '../context/user'
 import more from '../icons/more.png'
+import { CommentLike } from "./LikeComment"
 
 export const CommentList = ({comments,setComments,article, commentCount, setCommentCount,setPage, setDeleted}) =>{
     const {user:{username}} = useContext(UserContext)
     const [viewComments, setViewComments] = useState(false)
-    console.log(commentCount,"<<<<count")
-    console.log(comments.length,'<<<<<length')
+
     return  (
             <>
                 <div id='commentsList'>
@@ -33,7 +33,12 @@ export const CommentList = ({comments,setComments,article, commentCount, setComm
                          
                                 <p>{body}</p>
                                 <div id='trashContainer'>
-                                <div id='likes'><img src={like} alt='like icon'/><p>{votes}</p><img src={dislike} alt='dislike icon'/></div>
+                                    
+                                <div id='likes'>
+                                    {/* <img src={like} alt='like icon'/><p>{votes}</p><img src={dislike} alt='dislike icon'/> */}
+                                    <CommentLike index={index} commentId={comment_id} votes={votes} setComments={setComments}/>
+                                    </div>
+                                
                                 {username===article.author || username===author?<DeleteComment setDeleted={setDeleted} commentPosition = {index} setComments ={setComments} commentId = {comment_id} setCommentCount={setCommentCount}/>:null}
                                 </div>
                                 </>
