@@ -18,7 +18,7 @@ export const SignUp = () =>{
         newUser.username = e.target[0].value
         newUser.name = e.target[1].value
         newUser.avatar_url = e.target[2].value
-        console.log(newUser)
+        
         postUser(newUser).then((userProfile)=> {
             setUser(userProfile)
             setCreated(true)
@@ -32,7 +32,8 @@ export const SignUp = () =>{
     return (
         <>
         <Header/>
-        <div id='loginContainer'>
+        <div id='layoutContainer'>
+        <div id='signUpContainer'>
         {error?<p>Username taken. <Link to="/login">Already a member?</Link> </p>:null}
         {created? navigate("/")
     : <form onSubmit={createUser}>
@@ -45,6 +46,7 @@ export const SignUp = () =>{
         <button id='createButton'>Create User</button>
     </form>
         }
+    </div>
     </div>
     </>
     )
