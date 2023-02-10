@@ -56,3 +56,11 @@ export const postComment = (article_id, username, body) => {
 export const deleteComment = (comment_id) => {
   return api.delete(`/comments/${comment_id}`).then((res) => console.log(res));
 };
+
+export const getUserbyUsername = (username) => {
+  return api.get(`users/${username}`).then(({ data: { user } }) => user);
+};
+
+export const postUser = (userObj) => {
+  return api.post("users", userObj).then(({ data: { user } }) => user);
+};

@@ -1,0 +1,51 @@
+#createButton{
+    width: 120px;
+    margin-top: 70px;
+    margin-left: 75px;
+    background-color: #37bc9b;
+    border-radius: 15px;
+    padding: 5px;
+    color: white;
+    font-size: 16px;
+    box-shadow: 3px 3px 3px grey;
+    transition:0.3s;
+    margin-bottom: 20px;
+}
+#createButton:hover{
+    cursor: pointer;
+    background-color:#31a98b ;
+    
+}
+
+#signUpContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    background-color:#c5f2e7;;
+    width:380px;
+    padding-top: 60px;
+    border-radius: 25px;
+    padding-bottom: 30px;
+    box-shadow: 0 0 5px 5px #175948;
+}
+#usernameSign{
+    margin-bottom: 5px;
+}
+#nameSign{
+    margin-bottom: 5px;
+}
+#url>input{
+    margin-left: 10px;
+}
+#nameSign>input{
+    margin-left: 70.5px;
+}
+#usernameSign>input{
+    margin-left: 36px;
+}
+#layoutContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
