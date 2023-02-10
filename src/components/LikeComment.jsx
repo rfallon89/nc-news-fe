@@ -10,7 +10,7 @@ export const CommentLike = ({setComments, commentId, votes,index}) =>{
 
     useEffect(()=>{
         patchComment(commentId,like)
-    },[click])
+    },[click,like,commentId])
 
     const voteHandler = (value) =>{
         setComments(curr=>{
