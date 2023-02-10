@@ -5,6 +5,8 @@ import dislike from '../icons/dislike.png'
 import '../styles/CommentList.css'
 import { DeleteComment } from "./DeleteComment"
 import {UserContext} from '../context/user'
+import more from '../icons/more.png'
+export const CommentList = ({comments,comment_count,setPage}) =>{
 
 export const CommentList = ({comments,setComments,article, commentCount, setCommentCount}) =>{
     const {user:{username}} = useContext(UserContext)
@@ -40,7 +42,8 @@ export const CommentList = ({comments,setComments,article, commentCount, setComm
                             )
                     })}
                 </ul>
-            
+                {comments.length!==comment_count?<div id='iconContainer'><img src={more} alt='more comments icon' onClick={()=> setPage(currPage => currPage+1)} id='more'></img></div>:null}
+                </>
                 :<p></p>}
             </>
             )          

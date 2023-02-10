@@ -8,6 +8,8 @@ export const Comments = ({article}) =>{
     
     const [comments,setComments] = useState([])
     const [commentCount, setCommentCount] = useState(article.comment_count)
+    const [commentCount, setCommentCount] = useState(comment_count)
+    const [page, setPage] = useState(1)
   
     useEffect(()=>{
         getCommentsbyArticleId(article.article_id).then(comments=>{
@@ -18,7 +20,7 @@ export const Comments = ({article}) =>{
     return (
         <section>
            <AddComment article_id={article.article_id} setComments={setComments} setCount={setCommentCount}/>
-           <CommentList comments={comments} setComments={setComments} article={article} commentCount={commentCount} setCommentCount={setCommentCount}/>
+           <CommentList comments={comments} setComments={setComments} article={article} commentCount={commentCount} setCommentCount={setCommentCount} setPage={setPage} page={page}/>
         </section>
     )
 }
