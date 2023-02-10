@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { UserContext } from "../context/user";
 import { postUser } from "../utils/API";
 import { useNavigate,Link } from "react-router-dom";
+import {Header} from './Header'
+import '../styles/SignUp.css'
 
 export const SignUp = () =>{
     const {setUser, user} = useContext(UserContext)
@@ -29,18 +31,21 @@ export const SignUp = () =>{
     }
     return (
         <>
+        <Header/>
+        <div id='loginContainer'>
         {error?<p>Username taken. <Link to="/login">Already a member?</Link> </p>:null}
         {created? navigate("/")
     : <form onSubmit={createUser}>
-        <label htmlFor="username"> <b>Username:</b></label>
-        <input required name='username'/>
-        <label htmlFor="name"> <b>Name:</b></label>
-        <input required name='name'/>
-        <label htmlFor="avatar_url"><b>Avatar Image :</b></label>
-        <input name="avatar" type='url'/>
-        <button>Create User</button>
+        <label id='usernameSign' htmlFor="username"> <b>Username:</b><input required name='username'/></label>
+        
+        <label id='nameSign' htmlFor="name"> <b>Name:</b><input required name='name'/></label>
+        
+        <label id='url' htmlFor="avatar_url"><b>Avatar Image :</b><input name="avatar" type='url'/></label>
+        
+        <button id='createButton'>Create User</button>
     </form>
         }
+    </div>
     </>
     )
 }

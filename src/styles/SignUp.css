@@ -1,0 +1,31 @@
+#createButton{
+    width: 120px;
+    margin-top: 30px;
+    margin-left: 50px;
+    background-color: #37bc9b;
+    border-radius: 15px;
+    padding: 5px;
+    color: white;
+    font-size: 16px;
+    box-shadow: 3px 3px 3px grey;
+    transition:0.3s;
+    margin-bottom: 20px;
+}
+#createButton:hover{
+    cursor: pointer;
+    background-color:#31a98b ;
+    
+}
+
+#loginContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    
+}
+#usernameSign{
+    font-weight: 600;
+    margin-bottom: 5px;
+    padding-right: 20px;
+}
