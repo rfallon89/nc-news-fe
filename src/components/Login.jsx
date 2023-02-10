@@ -24,11 +24,11 @@ export const Login = () => {
         if (username){
         return navigate("/");
         }
-    },[username]);
+    },[username,navigate]);
 
     return (
         <div>
-            <img id='background' src={logo}/>
+            <img id='background' alt = 'NC News logo' src={logo}/>
             <Header/>
             <div id='loginContainer'>
             {!exists?<p id='Usernamefail'> Username does not exist. Try again or create a new user profile</p>:null}

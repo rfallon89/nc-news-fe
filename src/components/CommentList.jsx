@@ -1,7 +1,5 @@
 import { useState, useContext } from "react"
 import messageIcon from '../icons/message.png'
-import like from '../icons/thumb-up.png'
-import dislike from '../icons/dislike.png'
 import '../styles/CommentList.css'
 import { DeleteComment } from "./DeleteComment"
 import {UserContext} from '../context/user'

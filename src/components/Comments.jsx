@@ -6,14 +6,13 @@ import { CommentList } from "./CommentList"
 export const Comments = ({article}) =>{
     
     const [comments,setComments] = useState([])
-    // const [commentCount, setCommentCount] = useState(article.comment_count)
     const [commentCount, setCommentCount] = useState(article.comment_count)
     const [page, setPage] = useState(1)
   
     useEffect(()=>{
         getCommentsbyArticleId(article.article_id,page).then(commentsRes=>{
             setCommentCount(article.comment_count)
-            setComments([...comments,...commentsRes])})
+            setComments(curr=>[...curr,...commentsRes])})
     },[article,page])
 
     return (

@@ -33,7 +33,7 @@ export const Article = () =>{
 
     useEffect(()=>{
         patchArticleById(article_id,like)
-    },[article_id,click])
+    },[article_id,click,like])
 
     const voteHandler = (value) =>{
         setArticle({...article,votes:article.votes+value})

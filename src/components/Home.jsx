@@ -30,23 +30,20 @@ export const Home = ({article_topic}) => {
         :getArticles(topicState, sortBy, order,page).then(articles =>{
             setTotalArticles(articles[0].total_count)
            return setArticles([...articles])}).catch((e)=>setError(true))
-    },[topicState,sortBy,order,page])
+    },[topicState,sortBy,order,page,article_topic])
 
     useEffect(()=>{
         if(topic!==topicState){
             setTopicState(topic)
             setPage(1)
         }
-    },[topic])
+    },[topic,topicState])
 
     let navigate = useNavigate();
-    const errorHandler = () =>{{
-        return navigate("*")
-    }}
     
     return (
         <div>
-            {error? errorHandler():
+            {error? navigate("*"):
             <div>
            {!article_topic?<Header/>:null}
            {article_topic?null:<Sort setSortBy={setSortBy} setOrder={setOrder}/>}

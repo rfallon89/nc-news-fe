@@ -6,7 +6,7 @@ import {Header} from './Header'
 import '../styles/SignUp.css'
 
 export const SignUp = () =>{
-    const {setUser, user} = useContext(UserContext)
+    const {setUser} = useContext(UserContext)
     const [created, setCreated] = useState(false)
     const [error, setError] = useState(false)
 
