@@ -15,5 +15,5 @@ $ git clone https://github.com/rfallon89/nc-news-fe.git
 To launch the application run the following commands:
 ```
 $ npm i
-$npm start
+$ npm start
 ```
