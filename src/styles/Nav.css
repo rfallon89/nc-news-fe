@@ -29,9 +29,10 @@ nav {
   padding-left:5px;
   color: white;
   margin:0;
+  height: 19px;
   padding-top: 20px;
   padding-bottom:21px ;
-  width:164px
+  width:80px
 }
 
 .topic {
@@ -59,8 +60,6 @@ nav ul {
     display:inline-block;
   }
   .dropD>p:after { content: ' »'; }
-
-  /* .dropD>p:only-child:after { content: ''; } */
 
   nav ul li a {
     padding:20px;
@@ -133,12 +132,13 @@ nav ul {
     .user{
       border-right:solid 1px #21715d ;
       padding-right:10px;
-      padding:auto;
       padding-left:5px;
       color: white;
       margin:0;
+      height: 19px;
       padding-top: 20px;
       padding-bottom:21px ;
+      min-width: 80px;
   }
     
     .topic {
