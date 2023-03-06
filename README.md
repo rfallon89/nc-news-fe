@@ -16,4 +16,4 @@ To launch the application run the following commands:
 ```
 $ npm i
 $npm start
-
+```
