@@ -34,11 +34,13 @@ export const AddComment = ({setComments, article_id, setCount}) =>{
                 <form onSubmit = {addComment}>
                     <textarea id='addComment' value={newComment} onChange={commentHandler} name="addComment" placeholder='Add new comment...' rows="5"></textarea>
                     <button id='submitComment'>Add Comment</button>
-                 </form>
-                 {noContent?<p id='noContent'>Please leave a comment before submitting</p>:null}
-                 {posted?<p id="added">Comment added</p>:null}
-                 {!username?<Link to='/login'>Log in to leave a comment</Link>:null}
-        
+                </form>
+                
+                {noContent?<p id='noContent'>Please leave a comment before submitting</p>:null}
+                
+                {posted?<p id="added">Comment added</p>:null}
+                
+                {!username?<Link to='/login'>Log in to leave a comment</Link>:null}
             </>
             )
 }

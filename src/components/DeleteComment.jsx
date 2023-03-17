@@ -1,6 +1,7 @@
 import { deleteComment } from "../utils/API"
 import bin from '../icons/trash.png'
 import '../styles/DeleteComment.css'
+
 export const DeleteComment = ({commentId,commentPosition, setComments, setCommentCount}) =>{
     
     const removeComment = () =>{
@@ -13,8 +14,9 @@ export const DeleteComment = ({commentId,commentPosition, setComments, setCommen
         deleteComment(commentId)
     }
 
-    return(
-    <button id="bin" onClick={removeComment}><img id="bin" src={bin} alt='delete icon'/></button>
-   ) 
-
+    return (
+         <button id="bin" onClick={removeComment}>
+            <img id="bin" src={bin} alt='delete icon'/>
+        </button>
+    ) 
 }

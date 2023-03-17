@@ -9,7 +9,12 @@
     
       margin-top: 50px;
     }
- 
+    
+    .loadingContainer{
+      display:flex;
+      padding-top: 10vh;
+      justify-content: center;
+    }
     
     .article{
     
@@ -86,6 +91,11 @@
         flex-wrap: wrap;
         gap:100px;
         justify-content: center;
+      }
+      .loadingContainer{
+        display:flex;
+        justify-content: center;
+        padding-top: 10vh;
       }
     
       .article{

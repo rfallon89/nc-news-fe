@@ -6,6 +6,7 @@ import {Header} from './Header'
 import '../styles/SignUp.css'
 
 export const SignUp = () =>{
+
     const {setUser} = useContext(UserContext)
     const [created, setCreated] = useState(false)
     const [error, setError] = useState(false)
@@ -31,23 +32,28 @@ export const SignUp = () =>{
     }
     return (
         <>
-        <Header/>
-        <div id='layoutContainer'>
-        <div id='signUpContainer'>
-        {error?<p>Username taken. <Link to="/login">Already a member?</Link> </p>:null}
-        {created? navigate("/")
-    : <form onSubmit={createUser}>
-        <label id='usernameSign' htmlFor="username"> <b>Username:</b><input required name='username'/></label>
-        
-        <label id='nameSign' htmlFor="name"> <b>Name:</b><input required name='name'/></label>
-        
-        <label id='url' htmlFor="avatar_url"><b>Avatar Image :</b><input name="avatar" type='url'/></label>
-        
-        <button id='createButton'>Create User</button>
-    </form>
-        }
-    </div>
-    </div>
-    </>
+            <Header/>
+            <div id='layoutContainer'>
+                <div id='signUpContainer'>
+                    {error
+                        ?<p>Username taken. <Link to="/login">Already a member?</Link></p>
+                        :null}
+                    {created
+                        ?navigate("/")
+                        : <form onSubmit={createUser}>
+                            <label id='usernameSign' htmlFor="username"> <b>Username:</b>
+                                <input required name='username'/>
+                            </label>
+                            <label id='nameSign' htmlFor="name"> <b>Name:</b>
+                                <input required name='name'/>
+                            </label>    
+                            <label id='url' htmlFor="avatar_url"><b>Avatar Image :</b>
+                                <input name="avatar" type='url'/>
+                            </label>
+                            <button id='createButton'>Create User</button>
+                        </form>}
+                </div>
+            </div>
+        </>
     )
 }

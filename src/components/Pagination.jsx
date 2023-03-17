@@ -14,7 +14,6 @@ export const Pagination = ({page, setPage, totalArticles})=>{
     },[totalArticles])
 
     const paginationHandler =({target:{value}})=>{
-        console.log(value)
         setPage(value)
     }
     

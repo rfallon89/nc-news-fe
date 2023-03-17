@@ -13,41 +13,47 @@ export const CommentList = ({comments,setComments,article, commentCount, setComm
     return  (
             <>
                 <div id='commentsList'>
-                    <button id='comments_toggle' onClick={()=>setViewComments(!viewComments)}><img src={messageIcon} alt='message icon'/> Comments</button>
-                <p>{commentCount}</p>
+                    <button id='comments_toggle' onClick={()=>setViewComments(!viewComments)}>
+                        <img src={messageIcon} alt='message icon'/>
+                    Comments
+                    </button>
+                    <p>{commentCount}</p>
                 </div>
             
                 {viewComments
-                ?<><ul id='commentContainer'>
-                    {comments.map(({comment_id,author,created_at,body,votes},index)=>{
-                        return (
-                            <li id='commentLayout' key={comment_id}>
-                                {author?
-                                <>
-                                <div id='post'>
-                                    <p>{author} -</p>
-                                    <p>{new Date(created_at).toDateString()}</p>
-                                </div>
-                         
-                                <p>{body}</p>
-                                <div id='trashContainer'>
-                                    
-                                <div id='likes'>
-                                    {/* <img src={like} alt='like icon'/><p>{votes}</p><img src={dislike} alt='dislike icon'/> */}
-                                    <CommentLike index={index} commentId={comment_id} votes={votes} setComments={setComments}/>
-                                    </div>
-                                
-                                {username===article.author || username===author?<DeleteComment setDeleted={setDeleted} commentPosition = {index} setComments ={setComments} commentId = {comment_id} setCommentCount={setCommentCount}/>:null}
-                                </div>
-                                </>
-                                :  <p id='deleted'>Comment ID: {comment_id} has been removed</p> }
-                            </li>
+                ?<>
+                    <ul id='commentContainer'>
+                        {comments.map(({comment_id,author,created_at,body,votes},index)=>{
+                            return (
+                                <li id='commentLayout' key={comment_id}>
+                                    {author
+                                        ?<>
+                                            <div id='post'>
+                                                <p>{author} -</p>
+                                                <p>{new Date(created_at).toDateString()}</p>
+                                            </div>
+                                            <p>{body}</p>
+                                            <div id='trashContainer'>   
+                                                <div id='likes'>
+                                                    <CommentLike index={index} commentId={comment_id} votes={votes} setComments={setComments}/>
+                                                </div>
+                                                {username===article.author || username===author
+                                                    ?<DeleteComment setDeleted={setDeleted} commentPosition = {index} setComments ={setComments} commentId = {comment_id} setCommentCount={setCommentCount}/>
+                                                    :null}
+                                            </div>
+                                        </>
+                                        :<p id='deleted'>Comment ID: {comment_id} has been removed</p>}
+                                </li>
                             )
-                    })}
-                </ul>
-                {comments.length<commentCount?<div id='iconContainer'><img src={more} alt='more comments icon' onClick={()=> setPage(currPage => currPage+1)} id='more'></img></div>:null}
+                        })}
+                    </ul>
+                    {comments.length<commentCount
+                        ?<div id='iconContainer'>
+                            <img src={more} alt='more comments icon' onClick={()=> setPage(currPage => currPage+1)} id='more'></img>
+                        </div>
+                        :null}
                 </>
                 :<p></p>}
             </>
-            )          
+    )          
 }
